@@ -428,7 +428,7 @@ function processFolder($inputFolder, $outputFolder) {
         
         if (is_file($filePath) && isImage($file, ['jpg', 'jpeg', 'png', 'gif'])) {
             try {
-                $outputPath = rtrim($outputFolder, '/') . '/upscaled_' . $file;
+                $outputPath = rtrim($outputFolder, '/') . '/'. $file;
                 upscaleImage($filePath, $outputPath);
                 $processedCount++;
                 $results[] = [
@@ -921,7 +921,7 @@ function outputWebInterface() {
                                     imageCard.className = 'image-card';
                                     imageCard.innerHTML = `
                                         <h4>${result.file}</h4>
-                                        <img src="${outputFolder}/upscaled_${result.file}" alt="${result.file}">
+                                        <img src="${outputFolder}/${result.file}" alt="${result.file}">
                                         <div class="image-info">Successfully upscaled</div>
                                     `;
                                     document.getElementById('processedImages').appendChild(imageCard);
